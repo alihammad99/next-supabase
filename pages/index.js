@@ -1,8 +1,10 @@
 import { supabase } from "../utils/supabase";
 import Link from "next/link";
+import { useUser } from "../context/user";
 
 export default function Home({ lessons }) {
-  console.log(supabase.auth.user());
+  const { user } = useUser();
+  console.log({ user });
   return lessons.map((lesson) => (
     <div key={lesson.id}>
       <Link href={`/${lesson.id}`}>
